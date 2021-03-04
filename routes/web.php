@@ -13,11 +13,5 @@ use App\Http\Controllers\UsersController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-    view('users/index');
-});
-
-Route::get('users', [UsersController::class, 'index']);
+Route::get('/', [UsersController::class, 'index']);
 Route::post('users', [UsersController::class, 'store']);
-
