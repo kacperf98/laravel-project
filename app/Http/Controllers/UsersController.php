@@ -11,7 +11,7 @@ class UsersController extends Controller
     {
         $users = User::all();
 
-        return view('users/users/index', ['users' => $users]);
+        return view('users/index', ['users' => $users]);
     }
 
     public function store()
