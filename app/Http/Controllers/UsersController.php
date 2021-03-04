@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Illuminate\Http\Request;
 
 class UsersController extends Controller
 {
@@ -10,7 +11,7 @@ class UsersController extends Controller
     {
         $users = User::all();
 
-        return view('index', ['users' => $users]);
+        return view('users/users/index', ['users' => $users]);
     }
 
     public function store()

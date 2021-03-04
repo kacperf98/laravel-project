@@ -17,7 +17,7 @@
 
     <h2>Add User</h2>
 
-    <form method="POST" action="/index">
+    <form method="POST" action="/users">
         {{ csrf_field() }}
 
         <p>
