@@ -10,7 +10,7 @@ class UsersController extends Controller
     {
         $users = User::all();
 
-        return view('/index', compact('users'));
+        return view('index', compact('users'));
     }
 
     public function store()

@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UsersController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,6 +18,5 @@ Route::get('/', function () {
     return view('/index');
 });
 
-Route::get('/', '\App\Http\Controllers\UsersController@index');
-
-Route::post('/', '\App\Http\Controllers\UsersController@index');
+Route::get('/', [UsersController::class, 'index']);
+Route::post('/', [UsersController::class, 'index']);
