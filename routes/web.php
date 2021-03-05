@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UsersController;
+use App\Http\Controllers\PostsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,3 +16,5 @@ use App\Http\Controllers\UsersController;
 */
 Route::get('/', [UsersController::class, 'index']);
 Route::post('users', [UsersController::class, 'store']);
+
+Route::get('posts/{post}', [PostsController::class, 'show']);
