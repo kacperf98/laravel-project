@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 
 class UsersController extends Controller
 {
+    /**
+     *
+     * Show a list of all of the application's users.
+     *
+     */
     public function index()
     {
         $users = User::all();
@@ -14,6 +19,11 @@ class UsersController extends Controller
         return view('users/index', ['users' => $users]);
     }
 
+    /**
+     *
+     * Create a new user and save into DB.
+     *
+     */
     public function store()
     {
         $user = new User;
