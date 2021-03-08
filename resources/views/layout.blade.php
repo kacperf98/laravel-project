@@ -28,14 +28,14 @@ Released   : 20131203
             <div id="menu">
                 <ul>
                     <li class="{{ Request::is('/') ? 'current_page_item' : '' }}"><a href="/" accesskey="1" title="">Homepage</a></li>
-                    <li class="{{ Request::is('users') ? 'current_page_item' : '' }}"><a href="/users" accesskey="2" title="">Users</a></li>
+{{--                    <li class="{{ Request::is('users') ? 'current_page_item' : '' }}"><a href="#" accesskey="2" title="">Users</a></li>--}}
                     <li class="{{ Request::is('about') ? 'current_page_item' : '' }}"><a href="/about" accesskey="3" title="">About Me</a></li>
                     <li class="{{ Request::is('contact') ? 'current_page_item' : '' }}"><a href="#" accesskey="5" title="">Contact</a></li>
                 </ul>
             </div>
         </div>
         <div id="logo">
-            <h1><a href="/">Laravel</a></h1>
+            <h1><a href="/">Laravel Project</a></h1>
             <span>Design by <a href="http://templated.co" rel="nofollow">TEMPLATED</a></span>
         </div>
     </div>
@@ -49,7 +49,7 @@ Released   : 20131203
         </div>
         <ul class="contact">
             <li><a href="#" class="icon icon-twitter"><span>Twitter</span></a></li>
-            <li><a href="#" class="icon icon-facebook"><span></span></a></li>
+            <li><a href="#" class="icon icon-facebook"><span>Facebook</span></a></li>
             <li><a href="#" class="icon icon-dribbble"><span>Pinterest</span></a></li>
             <li><a href="#" class="icon icon-tumblr"><span>Google+</span></a></li>
             <li><a href="#" class="icon icon-github"><span>Github</span></a></li>
