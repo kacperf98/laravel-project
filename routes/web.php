@@ -15,8 +15,17 @@ use App\Http\Controllers\AssignmentController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/', [UsersController::class, 'index']);
+Route::get('/', function () {
+    return view('welcome');
+});
 
+Route::get('about', function (){
+    return view('about');
+});
+
+Route::view('about', 'about') ;
+
+Route::get('users', [UsersController::class, 'index']);
 Route::post('users', [UsersController::class, 'store']);
 
 Route::get('posts/{post}', [PostsController::class, 'show']);
