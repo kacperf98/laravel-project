@@ -1,31 +1,25 @@
 @extends('layout')
 
 @section('content')
-    <h1>All Users</h1>
+    <div id="wrapper1">
+        <div id="welcome" class="container">
+            <div class="title">
+                <h2>All Users</h2>
+                @foreach ($users as $user)
+                    <li>{{ $user->name }}</li>
+                @endforeach
+            </div>
+            <div class="content">
+                <h2>Add User</h2>
+                <form method="POST" action="/users">
+                    {{ csrf_field() }}
 
-    @foreach ($users as $user)
-        <li>{{ $user->name }}</li>
-    @endforeach
-
-    <h2>Add User</h2>
-
-    <form method="POST" action="/users">
-        {{ csrf_field() }}
-
-        <p>
-            <input type="text" name="name" placeholder="Name" required>
-        </p>
-
-        <p>
-            <input type="email" name="email" placeholder="Email Address" required>
-        </p>
-
-        <p>
-            <input type="password" name="password" placeholder="Password" required>
-        </p>
-
-        <p>
-            <button type="submit">Add User</button>
-        </p>
-    </form>
+                    <input class="text" type="text" name="name" placeholder="Name" required>
+                    <input class="text" type="email" name="email" placeholder="Email Address" required>
+                    <input class="text" type="password" name="password" placeholder="Password" required>
+                    <button class = "button" type="submit">Add User</button>
+                </form>
+            </div>
+        </div>
+    </div>
 @endsection

@@ -10,7 +10,8 @@
             <div class="content">
                 <p>This website was created to improve my programming skills.</p>
                 <p>Mostly I paid attention to learn and improve programming in Laravel creating this website.</p>
-                <a href="https://github.com/kacperf98" class="button">Github</a> </div>
+                <a href="https://github.com/kacperf98" class="button">Github</a>
+            </div>
         </div>
     </div>
 @endsection
