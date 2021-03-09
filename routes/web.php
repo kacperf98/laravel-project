@@ -31,3 +31,7 @@ Route::post('users', [UsersController::class, 'store']);
 Route::get('posts/{post}', [PostsController::class, 'show']);
 
 Route::get('assignments', [AssignmentController::class, 'showAssignment']);
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
