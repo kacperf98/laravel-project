@@ -3,7 +3,6 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\PostsController;
-use App\Http\Controllers\AssignmentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,18 +18,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('about', function (){
-    return view('about');
-});
-
 Route::view('about', 'about') ;
 
 Route::get('users', [UsersController::class, 'index']);
 Route::post('users', [UsersController::class, 'store']);
 
 Route::get('posts/{post}', [PostsController::class, 'show']);
-
-Route::get('assignments', [AssignmentController::class, 'showAssignment']);
 
 Auth::routes();
 
