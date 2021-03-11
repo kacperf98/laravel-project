@@ -7,10 +7,17 @@ use App\Models\Post;
 
 class PostsController extends Controller
 {
-    public function show($slug)
+    public function index()
     {
-        return view('posts/post', [
-            'post' => Post::where('slug', $slug)->firstOrFail()
-        ]);
+        $posts = Post::latest()->get();
+
+        return view('post', ['posts' => $posts]);
+    }
+
+    public function show($id)
+    {
+        $post = Post::find($id);
+
+        return view('posts/show', ['post' => $post]);
     }
 }
