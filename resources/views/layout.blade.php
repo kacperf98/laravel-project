@@ -20,7 +20,6 @@ Released   : 20131203
 
     <link href="/css/default.css" rel="stylesheet"/>
     <link href="/css/fonts.css" rel="stylesheet"/>
-    <link href="/css/app.css" rel="stylesheet">
 
 </head>
 <body>
@@ -31,7 +30,7 @@ Released   : 20131203
                     <li class="{{ Request::is('/') ? 'current_page_item' : '' }}"><a href="/" accesskey="1" title="">Homepage</a></li>
 {{--                    <li class="{{ Request::is('users') ? 'current_page_item' : '' }}"><a href="#" accesskey="2" title="">Users</a></li>--}}
                     <li class="{{ Request::is('about') ? 'current_page_item' : '' }}"><a href="/about" accesskey="3" title="">About Me</a></li>
-                    <li class="{{ Request::is('contact') ? 'current_page_item' : '' }}"><a href="#" accesskey="5" title="">Contact</a></li>
+                    <li class="{{ Request::is('posts') ? 'current_page_item' : '' }}"><a href="#" accesskey="5" title="">Posts</a></li>
                     <li class="{{ Request::is('login') ? 'current_page_item' : '' }}"><a href="/login" accesskey="1" title="">Login</a></li>
                 </ul>
             </div>
