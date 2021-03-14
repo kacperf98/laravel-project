@@ -16,12 +16,12 @@ class UsersController extends Controller
     {
         $users = User::all();
 
-        return view('users/index', ['users' => $users]);
+        return view('user', ['users' => $users]);
     }
 
     /**
      *
-     * Create a new user and save into DB.
+     * Store a new User and save into DB.
      *
      */
     public function store()
@@ -31,8 +31,19 @@ class UsersController extends Controller
         $user->name = request('name');
         $user->email = request('email');
         $user->password = bcrypt(request('password'));
+
         $user->save();
 
-        return back();
+        return redirect('/users');
+    }
+
+    /**
+     *
+     * Show a view to create a new Post.
+     *
+     */
+    public function create()
+    {
+        return view('users.create');
     }
 }
