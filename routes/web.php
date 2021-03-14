@@ -22,11 +22,14 @@ Route::get('posts', [PostsController::class, 'index']);
 Route::post('posts', [PostsController::class, 'store']);
 Route::get('posts/create', [PostsController::class, 'create']);
 Route::get('posts/{post}', [PostsController::class, 'show']);
+Route::get('posts/{post}/edit', [PostsController::class, 'edit']);
+Route::put('posts/{post}', [PostsController::class, 'update']);
 
 
 Route::get('users', [UsersController::class, 'index']);
 Route::post('users', [UsersController::class, 'store']);
+Route::get('users/create', [UsersController::class, 'create']);
 
 
-Auth::routes();
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+//Auth::routes();
+//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

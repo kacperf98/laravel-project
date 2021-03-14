@@ -27,7 +27,7 @@ class PostsController extends Controller
     {
         $post = Post::find($id);
 
-        return view('posts/show', ['post' => $post]);
+        return view('posts.show', ['post' => $post]);
     }
 
     /**
@@ -37,12 +37,12 @@ class PostsController extends Controller
      */
     public function create()
     {
-        return view('posts/create');
+        return view('posts.create');
     }
 
     /**
      *
-     * Store the new created Post.
+     * Store the new created Post and save into DB..
      *
      */
     public function store()
@@ -52,6 +52,10 @@ class PostsController extends Controller
         $post->title = request('title');
         $post->excerpt = request('excerpt');
         $post->body = request('body');
+
+        $post->save();
+
+        return redirect('/posts');
     }
 
     /**
@@ -59,9 +63,11 @@ class PostsController extends Controller
      * Show a view to edit Post.
      *
      */
-    public function edit()
+    public function edit($id)
     {
+        $post = Post::find($id);
 
+        return view('posts.edit', ['post' => $post]);
     }
 
     /**
@@ -69,9 +75,17 @@ class PostsController extends Controller
      * Store the edited Post.
      *
      */
-    public function update()
+    public function update($id)
     {
+        $post = Post::find($id);
 
+        $post->title = request('title');
+        $post->excerpt = request('excerpt');
+        $post->body = request('body');
+
+        $post->save();
+
+        return redirect('/posts/' . $post->id);
     }
 
     /**
