@@ -19,11 +19,14 @@ Route::view('/', 'welcome');
 Route::view('about', 'about');
 
 Route::get('posts', [PostsController::class, 'index']);
+Route::post('posts', [PostsController::class, 'store']);
+Route::get('posts/create', [PostsController::class, 'create']);
 Route::get('posts/{post}', [PostsController::class, 'show']);
+
 
 Route::get('users', [UsersController::class, 'index']);
 Route::post('users', [UsersController::class, 'store']);
 
-Auth::routes();
 
+Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
