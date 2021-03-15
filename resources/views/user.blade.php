@@ -10,5 +10,9 @@
                 @endforeach
             </div>
         </div>
+
+        <div class="content">
+            <a href="users/create" class="button">Create User</a>
+        </div>
     </div>
 @endsection

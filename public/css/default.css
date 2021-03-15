@@ -430,6 +430,8 @@
 	#wrapper1
 	{
 		background: #EDEDED;
+        text-align: center;
+        padding: 0 0 8em 0;
 	}
 
 	#wrapper2
@@ -575,7 +577,7 @@
 
 	#newsletter .content
 	{
-		width: 600px;
+		/*width: 600px;*/
 		margin: 0 auto;
 	}
 
