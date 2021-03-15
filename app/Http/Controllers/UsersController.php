@@ -20,12 +20,29 @@ class UsersController extends Controller
     }
 
     /**
+     * Show the form to create a new user.
      *
-     * Store a new User and save into DB.
-     *
+     * @return \Illuminate\View\View
      */
-    public function store()
+    public function create()
     {
+        return view('users.create');
+    }
+
+    /**
+     * Store a new user.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        $validated = $request->validate([
+            'name' => 'required|max:255',
+            'email' => 'required|email:filter',
+            'password' => 'required',
+        ]);
+
         $user = new User;
 
         $user->name = request('name');
@@ -35,15 +52,5 @@ class UsersController extends Controller
         $user->save();
 
         return redirect('/users');
-    }
-
-    /**
-     *
-     * Show a view to create a new Post.
-     *
-     */
-    public function create()
-    {
-        return view('users.create');
     }
 }

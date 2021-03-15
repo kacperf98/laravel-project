@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use Illuminate\Http\Request;
 
 class PostsController extends Controller
 {
@@ -31,9 +32,9 @@ class PostsController extends Controller
     }
 
     /**
+     * Show the form to create a new blog post.
      *
-     * Show a view to create a new Post.
-     *
+     * @return \Illuminate\View\View
      */
     public function create()
     {
@@ -41,12 +42,19 @@ class PostsController extends Controller
     }
 
     /**
+     * Store a new blog post.
      *
-     * Store the new created Post and save into DB..
-     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
      */
-    public function store()
+    public function store(Request $request)
     {
+        $validated = $request->validate([
+            'title' => 'required|unique:posts|max:255',
+            'excerpt' => 'required',
+            'body' => 'required',
+        ]);
+
         $post = new Post();
 
         $post->title = request('title');
@@ -75,8 +83,14 @@ class PostsController extends Controller
      * Store the edited Post.
      *
      */
-    public function update($id)
+    public function update($id, Request $request)
     {
+        $validated = $request->validate([
+            'title' => 'required|unique:posts|max:255',
+            'excerpt' => 'required',
+            'body' => 'required',
+        ]);
+
         $post = Post::find($id);
 
         $post->title = request('title');

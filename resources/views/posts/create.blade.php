@@ -14,7 +14,15 @@
                         <label class="label" for="title">Title</label>
 
                         <div class="control">
-                            <input class="text" type="text" name="title" id="title">
+                            <input class="text @error('title') is-invalid @enderror"
+                                   type="text"
+                                   name="title"
+                                   id="title"
+                                   value="{{ old('title') }}">
+
+                            @error('title')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
                         </div>
                     </div>
 
@@ -22,7 +30,14 @@
                         <label class="label" for="excerpt">Excerpt</label>
 
                         <div class="control">
-                            <textarea class="textarea" name="excerpt" id="excerpt"></textarea>
+                            <textarea class="textarea @error('excerpt') is-invalid @enderror"
+                                      name="excerpt"
+                                      id="excerpt"
+                            >{{ old('excerpt') }}</textarea>
+
+                            @error('excerpt')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
                         </div>
                     </div>
 
@@ -30,7 +45,14 @@
                         <label class="label" for="body">Body</label>
 
                         <div class="control">
-                            <textarea class="textarea" name="body" id="body"></textarea>
+                            <textarea class="textarea @error('body') is-invalid @enderror"
+                                      name="body"
+                                      id="body"
+                            >{{ old('body') }}</textarea>
+
+                            @error('excerpt')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
                         </div>
                     </div>
                     <div class="field is-grouped">
