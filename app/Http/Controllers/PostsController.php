@@ -8,9 +8,9 @@ use Illuminate\Http\Request;
 class PostsController extends Controller
 {
     /**
-     *
      * Show a list of all Posts.
      *
+     * @return \Illuminate\View\View
      */
     public function index()
     {
@@ -20,14 +20,12 @@ class PostsController extends Controller
     }
 
     /**
-     *
      * Show a single Post.
      *
+     * @return \Illuminate\View\View
      */
-    public function show($id)
+    public function show(Post $post)
     {
-        $post = Post::find($id);
-
         return view('posts.show', ['post' => $post]);
     }
 
@@ -49,57 +47,40 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
-        $validated = $request->validate([
+        Post::create($request->validate([
             'title' => 'required|unique:posts|max:255',
             'excerpt' => 'required',
             'body' => 'required',
-        ]);
-
-        $post = new Post();
-
-        $post->title = request('title');
-        $post->excerpt = request('excerpt');
-        $post->body = request('body');
-
-        $post->save();
+        ]));
 
         return redirect('/posts');
     }
 
     /**
-     *
      * Show a view to edit Post.
      *
+     * @return \Illuminate\View\View
      */
-    public function edit($id)
+    public function edit(Post $post)
     {
-        $post = Post::find($id);
-
         return view('posts.edit', ['post' => $post]);
     }
 
     /**
-     *
      * Store the edited Post.
      *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
      */
-    public function update($id, Request $request)
+    public function update(Post $post, Request $request)
     {
-        $validated = $request->validate([
+        $post->update($request->validate([
             'title' => 'required|unique:posts|max:255',
             'excerpt' => 'required',
             'body' => 'required',
-        ]);
+        ]));
 
-        $post = Post::find($id);
-
-        $post->title = request('title');
-        $post->excerpt = request('excerpt');
-        $post->body = request('body');
-
-        $post->save();
-
-        return redirect('/posts/' . $post->id);
+        return redirect()->route('posts.show', $post);
     }
 
     /**
