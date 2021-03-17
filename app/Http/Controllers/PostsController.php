@@ -75,9 +75,9 @@ class PostsController extends Controller
     public function update(Post $post, Request $request)
     {
         $post->update($request->validate([
-            'title' => 'required|unique:posts|max:255',
+            'title' => 'required|max:255',
             'excerpt' => 'required',
-            'body' => 'required',
+            'body' => 'required'
         ]));
 
         return redirect()->route('posts.show', $post);

@@ -14,4 +14,12 @@ class Post extends Model
         'excerpt',
         'body'
     ];
+
+    /**
+     * Get the user that owns the post.
+     */
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
