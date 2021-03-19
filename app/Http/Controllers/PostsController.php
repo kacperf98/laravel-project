@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\Tag;
 use Illuminate\Http\Request;
 
 class PostsController extends Controller
@@ -14,7 +15,11 @@ class PostsController extends Controller
      */
     public function index()
     {
-        $posts = Post::latest()->get();
+        if(request('tag')) {
+            $posts = Tag::where('name', request('tag'))->firstOrFail()->posts;
+        } else {
+            $posts = Post::latest()->get();
+        }
 
         return view('post', ['posts' => $posts]);
     }
