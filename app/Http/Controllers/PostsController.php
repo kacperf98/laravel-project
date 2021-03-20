@@ -41,24 +41,27 @@ class PostsController extends Controller
      */
     public function create()
     {
-        return view('posts.create');
+        $tags = Tag::all();
+        return view('posts.create', ['tags' => Tag::all()]);
     }
 
     /**
      * Store a new blog post.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        Post::create($request->validate([
-            'title' => 'required|unique:posts|max:255',
-            'excerpt' => 'required',
-            'body' => 'required',
-        ]));
+        $this->validatePost();
 
-        return redirect('/posts');
+        $post = new Post(request(['title', 'excerpt', 'body']));
+        $post->user_id = 1;
+        $post->save();
+
+        $post->tags()->attach(request('tags'));
+
+        return redirect(route('posts.index'));
     }
 
     /**
@@ -74,27 +77,37 @@ class PostsController extends Controller
     /**
      * Store the edited Post.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function update(Post $post, Request $request)
     {
-        $post->update($request->validate([
-            'title' => 'required|max:255',
-            'excerpt' => 'required',
-            'body' => 'required'
-        ]));
+        $post->update($this->validatePost());
 
-        return redirect()->route('posts.show', $post);
+        return redirect($post->path());
     }
 
     /**
-     *
      * Delete the Post.
      *
      */
     public function destroy()
     {
 
+    }
+
+    /**
+     * Make validation for posts.
+     *
+     * @return \Illuminate\Http\Request  $request
+     */
+    protected function validatePost()
+    {
+        return request()->validate([
+            'title' => 'required|max:255',
+            'excerpt' => 'required',
+            'body' => 'required',
+            'tags' => 'exists:tags,id'
+        ]);
     }
 }
