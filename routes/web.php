@@ -31,5 +31,5 @@ Route::post('users', [UsersController::class, 'store']);
 Route::get('users/create', [UsersController::class, 'create']);
 
 
-//Auth::routes();
+Auth::routes();
 //Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

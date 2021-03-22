@@ -30,10 +30,11 @@ Released   : 20131203
             <div id="menu">
                 <ul>
                     <li class="{{ Request::is('/') ? 'current_page_item' : '' }}"><a href="/" accesskey="1" title="">Homepage</a></li>
-                    <li class="{{ Request::is('about') ? 'current_page_item' : '' }}"><a href="/about" accesskey="3" title="">About Me</a></li>
-                    <li class="{{ Request::is('users') ? 'current_page_item' : '' }}"><a href="/users" accesskey="2" title="">Users</a></li>
-                    <li class="{{ Request::is('posts') ? 'current_page_item' : '' }}"><a href="/posts" accesskey="5" title="">Posts</a></li>
-{{--                    <li class="{{ Request::is('login') ? 'current_page_item' : '' }}"><a href="/login" accesskey="1" title="">Login</a></li>--}}
+                    <li class="{{ Request::is('about') ? 'current_page_item' : '' }}"><a href="/about" accesskey="2" title="">About Me</a></li>
+                    <li class="{{ Request::is('users') ? 'current_page_item' : '' }}"><a href="/users" accesskey="3" title="">Users</a></li>
+                    <li class="{{ Request::is('posts') ? 'current_page_item' : '' }}"><a href="/posts" accesskey="4" title="">Posts</a></li>
+                    <li class="{{ Request::is('login') ? 'current_page_item' : '' }}"><a href="/login" accesskey="5" title="">Login</a></li>
+                    <li class="{{ Request::is('register') ? 'current_page_item' : '' }}"><a href="/register" accesskey="6" title="">Register</a></li>
                 </ul>
             </div>
         </div>
