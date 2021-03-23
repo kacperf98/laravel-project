@@ -18,9 +18,12 @@ Released   : 20131203
     <meta name="description" content="" />
     <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900" rel="stylesheet" />
 
+    <link href="/css/app.css" rel="stylesheet"/>
     <link href="/css/default.css" rel="stylesheet"/>
     <link href="/css/fonts.css" rel="stylesheet"/>
-    <link href="/css/app.css" rel="stylesheet"/>
+
+    <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}" defer></script>
 
 
 </head>
@@ -33,8 +36,37 @@ Released   : 20131203
                     <li class="{{ Request::is('about') ? 'current_page_item' : '' }}"><a href="/about" accesskey="2" title="">About Me</a></li>
                     <li class="{{ Request::is('users') ? 'current_page_item' : '' }}"><a href="/users" accesskey="3" title="">Users</a></li>
                     <li class="{{ Request::is('posts') ? 'current_page_item' : '' }}"><a href="/posts" accesskey="4" title="">Posts</a></li>
-                    <li class="{{ Request::is('login') ? 'current_page_item' : '' }}"><a href="/login" accesskey="5" title="">Login</a></li>
-                    <li class="{{ Request::is('register') ? 'current_page_item' : '' }}"><a href="/register" accesskey="6" title="">Register</a></li>
+
+                    <!-- Authentication Links -->
+                    @guest
+                        @if (Route::has('login'))
+                            <li class="{{ Request::is('login') ? 'current_page_item' : '' }}"><a href="/login" accesskey="5" title="">Login</a></li>
+                        @endif
+
+                        @if (Route::has('register'))
+                            <li class="{{ Request::is('register') ? 'current_page_item' : '' }}">
+                                    <a href="/register" accesskey="6" title="">Register</a></li>
+                        @endif
+                    @else
+                        <li class="nav-item dropdown">
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                {{ Auth::user()->name }}
+                            </a>
+
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{{ route('logout') }}"
+                                   onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                    {{ __('Logout') }}
+                                </a>
+
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    @csrf
+                                </form>
+                            </div>
+                        </li>
+                    @endguest
                 </ul>
             </div>
         </div>
