@@ -28,7 +28,7 @@
 
         @auth
             <div class="content">
-                <a href="posts/create" class="button">Create Post</a>
+                <a href="{{ route('posts.create') }}" class="button">Create Post</a>
             </div>
         @endauth
     </div>

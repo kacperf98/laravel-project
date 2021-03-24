@@ -32,10 +32,10 @@ Released   : 20131203
         <div id="header" class="container">
             <div id="menu">
                 <ul>
-                    <li class="{{ Request::is('/') ? 'current_page_item' : '' }}"><a href="/" accesskey="1" title="">Homepage</a></li>
-                    <li class="{{ Request::is('about') ? 'current_page_item' : '' }}"><a href="/about" accesskey="2" title="">About Me</a></li>
-                    <li class="{{ Request::is('users') ? 'current_page_item' : '' }}"><a href="/users" accesskey="3" title="">Users</a></li>
-                    <li class="{{ Request::is('posts') ? 'current_page_item' : '' }}"><a href="/posts" accesskey="4" title="">Posts</a></li>
+                    <li class="{{ Request::is('/') ? 'current_page_item' : '' }}"><a href="{{ route('index') }}" accesskey="1" title="">Homepage</a></li>
+                    <li class="{{ Request::is('about') ? 'current_page_item' : '' }}"><a href="{{ route('about') }}" accesskey="2" title="">About Me</a></li>
+                    <li class="{{ Request::is('users') ? 'current_page_item' : '' }}"><a href="{{ route('users.index') }}" accesskey="3" title="">Users</a></li>
+                    <li class="{{ Request::is('posts') ? 'current_page_item' : '' }}"><a href="{{ route('posts.index') }}" accesskey="4" title="">Posts</a></li>
 
                     <!-- Authentication Links -->
                     @guest

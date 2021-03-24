@@ -50,6 +50,6 @@ class UsersController extends Controller
         $user->password = bcrypt(request('password'));
         $user->save();
 
-        return redirect('/users');
+        return redirect('users.index');
     }
 }

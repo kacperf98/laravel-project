@@ -13,7 +13,7 @@
 
         @auth
             <div class="content">
-                <a href="users/create" class="button">Create User</a>
+                <a href="{{ route('users.create') }}" class="button">Create User</a>
             </div>
         @endauth
     </div>

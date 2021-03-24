@@ -5,6 +5,17 @@ use App\Http\Controllers\UsersController;
 use App\Http\Controllers\PostsController;
 
 /*
+ *
+ * TODO
+ *
+ * Change routes in Controllers;
+ * Add Tags in posts edit;
+ * Add option to delete users and posts;
+ * Add option to edit users;
+ *
+ */
+
+/*
 |--------------------------------------------------------------------------
 | Web Routes
 |--------------------------------------------------------------------------
@@ -14,21 +25,26 @@ use App\Http\Controllers\PostsController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::view('/', 'welcome');
+Route::view('/', 'welcome')->name('index');
 
-Route::view('about', 'about');
+Route::view('about', 'about')->name('about');
 
-Route::get('posts', [PostsController::class, 'index'])->name('posts.index');
-Route::post('posts', [PostsController::class, 'store']);
-Route::get('posts/create', [PostsController::class, 'create'])->middleware('auth');
-Route::get('posts/{post}', [PostsController::class, 'show'])->name('posts.show');
-Route::get('posts/{post}/edit', [PostsController::class, 'edit'])->middleware('auth');
-Route::put('posts/{post}', [PostsController::class, 'update']);
+Route::group(['prefix' => 'posts', 'as' => 'posts.'], function ()
+{
+    Route::get('/', [PostsController::class, 'index'])->name('index');
+    Route::post('/', [PostsController::class, 'store'])->name('store');
+    Route::get('/create', [PostsController::class, 'create'])->name('create')->middleware('auth');
+    Route::get('/{post}', [PostsController::class, 'show'])->name('show');
+    Route::get('/{post}/edit', [PostsController::class, 'edit'])->name('edit')->middleware('auth');
+    Route::put('/{post}', [PostsController::class, 'update'])->name('update');
+});
 
-
-Route::get('users', [UsersController::class, 'index']);
-Route::post('users', [UsersController::class, 'store']);
-Route::get('users/create', [UsersController::class, 'create'])->middleware('auth');
+Route::group(['prefix' => 'users', 'as' => 'users.'], function ()
+{
+    Route::get('/', [UsersController::class, 'index'])->name('index');
+    Route::post('/', [UsersController::class, 'store'])->name('store');
+    Route::get('/create', [UsersController::class, 'create'])->name('create')->middleware('auth');
+});
 
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index']);

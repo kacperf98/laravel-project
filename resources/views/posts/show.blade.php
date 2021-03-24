@@ -16,7 +16,7 @@
                     <p style="margin-top: 1em">
                         @foreach($post->tags as $tag)
                             <a href="{{ route('posts.index', ['tag' => $tag->name]) }}">
-                                {{ $tag->name }}
+                                #{{ $tag->name }}
                             </a>
                         @endforeach
                     </p>
@@ -26,7 +26,7 @@
 
         @auth
             <div class="content">
-                <a href="{{ $post->id }}/edit" class="button">Edit Post</a>
+                <a href="{{ route('posts.edit', ['post' => $post->id]) }}" class="button">Edit Post</a>
             </div>
         @endauth
     </div>
