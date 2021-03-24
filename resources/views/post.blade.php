@@ -26,8 +26,10 @@
             </ul>
         </div>
 
-        <div class="content">
-            <a href="posts/create" class="button">Create Post</a>
-        </div>
+        @if(\Illuminate\Support\Facades\Auth::check())
+            <div class="content">
+                <a href="posts/create" class="button">Create Post</a>
+            </div>
+        @endif
     </div>
 @endsection
