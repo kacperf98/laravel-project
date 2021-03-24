@@ -24,8 +24,10 @@
             </ul>
         </div>
 
-        <div class="content">
-            <a href="{{ $post->id }}/edit" class="button">Edit Post</a>
-        </div>
+        @auth
+            <div class="content">
+                <a href="{{ $post->id }}/edit" class="button">Edit Post</a>
+            </div>
+        @endauth
     </div>
 @endsection

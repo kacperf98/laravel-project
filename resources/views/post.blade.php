@@ -26,10 +26,10 @@
             </ul>
         </div>
 
-        @if(\Illuminate\Support\Facades\Auth::check())
+        @auth
             <div class="content">
                 <a href="posts/create" class="button">Create Post</a>
             </div>
-        @endif
+        @endauth
     </div>
 @endsection

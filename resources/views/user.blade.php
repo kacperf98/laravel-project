@@ -11,10 +11,10 @@
             </div>
         </div>
 
-        @if(\Illuminate\Support\Facades\Auth::check())
+        @auth
             <div class="content">
                 <a href="users/create" class="button">Create User</a>
             </div>
-        @endif
+        @endauth
     </div>
 @endsection
