@@ -8,7 +8,6 @@ use App\Http\Controllers\PostsController;
  *
  * TODO
  *
- * Change routes in Controllers;
  * Add Tags in posts edit;
  * Add option to delete users and posts;
  * Add option to edit users;
