@@ -72,7 +72,7 @@ Released   : 20131203
             </div>
         </div>
         <div id="logo">
-            <h1><a href="/">Laravel Project</a></h1>
+            <h1><a href="{{ route('index') }}">Laravel Project</a></h1>
         </div>
     </div>
 
