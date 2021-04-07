@@ -10,7 +10,6 @@ use App\Http\Controllers\PostsController;
  *
  * Add Tags in posts edit;
  * Add option to delete users and posts;
- * Add option to edit users;
  *
  */
 
@@ -43,6 +42,8 @@ Route::group(['prefix' => 'users', 'as' => 'users.'], function ()
     Route::get('/', [UsersController::class, 'index'])->name('index');
     Route::post('/', [UsersController::class, 'store'])->name('store');
     Route::get('/create', [UsersController::class, 'create'])->name('create')->middleware('auth');
+    Route::get('/{user}/edit', [UsersController::class, 'edit'])->name('edit')->middleware('auth');
+    Route::put('/{user}', [UsersController::class, 'update'])->name('update');
 });
 
 Auth::routes();
