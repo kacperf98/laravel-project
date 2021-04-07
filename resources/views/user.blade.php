@@ -14,6 +14,7 @@
         @auth
             <div class="content">
                 <a href="{{ route('users.create') }}" class="button">Create User</a>
+                <a href="{{ route('users.edit', ['user' => $user->id]) }}" class="button">Edit User</a>
             </div>
         @endauth
     </div>
