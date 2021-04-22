@@ -40,7 +40,7 @@ class UsersController extends Controller
     {
         $this->validateUser();
 
-        $user = new User(request(['name', 'email', 'password']));
+        $user = new User($request->only(['name', 'email', 'password']));
         $user->save();
 
         return redirect(route('users.index'));
