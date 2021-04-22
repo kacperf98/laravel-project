@@ -23,9 +23,9 @@ use App\Http\Controllers\PostsController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::view('/', 'welcome')->name('index');
 
-Route::view('about', 'about')->name('about');
+Route::view('/', 'welcome')->name('index');
+Route::view('/about', 'about')->name('about');
 
 Route::group(['prefix' => 'posts', 'as' => 'posts.'], function ()
 {
@@ -47,4 +47,4 @@ Route::group(['prefix' => 'users', 'as' => 'users.'], function ()
 });
 
 Auth::routes();
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index']);
+Route::get('home', [\App\Http\Controllers\HomeController::class, 'index']);
