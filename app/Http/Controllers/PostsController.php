@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use App\Models\Tag;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class PostsController extends Controller
 {
@@ -82,6 +83,10 @@ class PostsController extends Controller
      */
     public function update(Post $post, Request $request)
     {
+        if (! Gate::allows('update-post', $post)) {
+            abort(403);
+        }
+
         $post->update($this->validatePost());
 
         return redirect($post->path());
